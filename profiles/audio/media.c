@@ -1235,7 +1235,7 @@ static bool stop(void *user_data)
 	return media_player_send(mp, "Stop");
 }
 
-static bool pause(void *user_data)
+static bool pause_local(void *user_data)
 {
 	struct media_player *mp = user_data;
 
