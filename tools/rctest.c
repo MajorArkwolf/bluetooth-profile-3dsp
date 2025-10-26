@@ -26,6 +26,7 @@
 #include <config.h>
 #endif
 
+#include <linux/sockios.h>
 #include <stdio.h>
 #include <errno.h>
 #include <ctype.h>
