@@ -1285,7 +1285,7 @@ static struct avrcp_player_cb player_cb = {
 	.set_volume = set_volume,
 	.play = play,
 	.stop = stop,
-	.pause = pause,
+	.pause = pause_local,
 	.next = next,
 	.previous = previous,
 };
