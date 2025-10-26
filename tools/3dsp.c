@@ -413,6 +413,7 @@ static void slave_broadcast_channel_map_change(const void *data, uint8_t size,
 static void inquiry_resp_tx_power(const void *data, uint8_t size,
 							void *user_data)
 {
+	printf("inq resp tx pwr\n");
 	const struct bt_hci_rsp_read_inquiry_resp_tx_power *rsp = data;
 	struct bt_hci_cmd_write_ext_inquiry_response cmd;
 	uint8_t inqdata[] = { 0x03, 0x3d, 0x03, 0x43, 0x02, 0x0a, 0x00, 0x00 };
@@ -436,6 +437,7 @@ static void inquiry_resp_tx_power(const void *data, uint8_t size,
 
 static void read_clock(const void *data, uint8_t size, void *user_data)
 {
+	printf("Read clock");
 	const struct bt_hci_rsp_read_clock *rsp = data;
 	struct broadcast_message msg;
 	uint8_t bcastdata[sizeof(msg) + 3] = { LT_ADDR, 0x03, 0x11, };
@@ -462,6 +464,7 @@ static void read_clock(const void *data, uint8_t size, void *user_data)
 
 static void set_slave_broadcast(const void *data, uint8_t size, void *user_data)
 {
+	printf("Set broadcast");
 	const struct bt_hci_rsp_set_slave_broadcast *rsp = data;
 	struct bt_hci_cmd_read_clock cmd;
 
@@ -525,6 +528,8 @@ static void start_display(void)
 
 	bt_hci_send(hci_dev, BT_HCI_CMD_SET_SLAVE_BROADCAST, &cmd, sizeof(cmd),
 					set_slave_broadcast, NULL, NULL);
+
+	printf("Display started");
 }
 
 static void signal_callback(int signum, void *user_data)
